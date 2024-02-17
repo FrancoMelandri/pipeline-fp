@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main 
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@main
+
+    - name: Setup .NET 8
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '8.0.100'
+
+    - name: Build
+      run: |
+        dotnet build
+
+    - name: Test
+      run: |
+        dotnet test --no-restore test/pipeline-fp-test.csproj /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=lcov
+
+#    - name: Publish results
+#      uses: coverallsapp/github-action@master   
+#      with:
+#        github-token: ${{github.token}} 
+#        path-to-lcov: test/TestResults/coverage.info
+
