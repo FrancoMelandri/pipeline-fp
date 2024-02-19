@@ -1,19 +1,21 @@
 using FluentAssertions;
 using NUnit.Framework;
+using PipelineFpTest.Builder;
 using PipelineFpTest.Switch;
 
 namespace PipelineFpTest.Tests;
 
 public class SwitchUseCaseTests
 {
-    [TestCase(SwitchSelector.None, "None selector")]
-    [TestCase(SwitchSelector.North, "North selector")]
-    [TestCase(SwitchSelector.South, "South selector")]
-    [TestCase(SwitchSelector.West, "West selector")]
-    [TestCase(SwitchSelector.Est, "Est selector")]
-    public void WhenUsingSwitch_ResolveTheRightString(SwitchSelector selector, string expected)
-        => new SwitchUseCase()
-            .ResolveUsingSwitch(selector)
+    [TestCase(BuilderStep.None | BuilderStep.First, "First")]
+    [TestCase(BuilderStep.None | BuilderStep.Second, "Second")]
+    [TestCase(BuilderStep.None | BuilderStep.Third, "Third")]
+    [TestCase(BuilderStep.First | BuilderStep.Second, "First,Second")]
+    [TestCase(BuilderStep.Second | BuilderStep.Third, "Second,Third")]
+    [TestCase(BuilderStep.First | BuilderStep.Second | BuilderStep.Third, "First,Second,Third")]
+    public void WhenUsingIf_ResolveTheRightSteps(BuilderStep steps, string expected)
+        => new BuilderUseCase()
+            .ResolveUsingIf(steps)
             .Should()
             .Be(expected);
 }
