@@ -3,7 +3,7 @@ name: CI
 on:
   push:
     branches:
-      - main 
+      - main
 
 jobs:
 
@@ -29,8 +29,8 @@ jobs:
         dotnet test --no-restore test/pipeline-fp-test.csproj /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=lcov
 
 #    - name: Publish results
-#      uses: coverallsapp/github-action@master   
+#      uses: coverallsapp/github-action@master
 #      with:
-#        github-token: ${{github.token}} 
+#        github-token: ${{github.token}}
 #        path-to-lcov: test/TestResults/coverage.info
 
