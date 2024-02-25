@@ -10,10 +10,21 @@ public class SwitchUseCaseTests
     [TestCase(SwitchSelector.North, "North selector")]
     [TestCase(SwitchSelector.South, "South selector")]
     [TestCase(SwitchSelector.West, "West selector")]
-    [TestCase(SwitchSelector.Est, "Est selector")]
+    [TestCase(SwitchSelector.East, "East selector")]
     public void WhenUsingSwitch_ResolveTheRightString(SwitchSelector selector, string expected)
-        => new SwitchUseCase()
-            .ResolveUsingSwitch(selector)
-            .Should()
-            .Be(expected);
+        => SwitchUseCase
+        .ResolveUsingSwitch(selector)
+        .Should()
+        .Be(expected);
+
+    [TestCase(SwitchSelector.None, "None selector")]
+    [TestCase(SwitchSelector.North, "North selector")]
+    [TestCase(SwitchSelector.South, "South selector")]
+    [TestCase(SwitchSelector.West, "West selector")]
+    [TestCase(SwitchSelector.East, "East selector")]
+    public void WhenUsingBasicPipeline_ResolveTheRightString(SwitchSelector selector, string expected)
+        => SwitchUseCase
+        .ResolveUsingBasicPipeline(selector)
+        .Should()
+        .Be(expected);
 }

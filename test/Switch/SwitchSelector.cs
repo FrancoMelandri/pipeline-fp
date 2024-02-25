@@ -6,5 +6,5 @@ public enum SwitchSelector
     North,
     South,
     West,
-    Est
+    East
 }
