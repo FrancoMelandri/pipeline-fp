@@ -1,6 +1,8 @@
 ﻿using PipelineFp.Pipelines;
 using TinyFp;
 using TinyFp.Extensions;
+using static PipelineFpTest.Switch.BasicPipelineStep.BasicPipelineConstants.Selectors;
+
 using static TinyFp.Prelude;
 
 namespace PipelineFpTest.Switch.BasicPipelineStep;
@@ -14,6 +16,6 @@ internal class SwitchWestStep : IStep<SwitchContext>
     private static SwitchContext UpdateContext(SwitchContext context)
         => context
         .ToOption(_ => _.InputSelector != SwitchSelector.West)
-        .Map(_ => _.With("West selector"))
+        .Map(_ => _.With(WestSelector))
         .OrElse(context);
 }
