@@ -1,4 +1,4 @@
-﻿namespace PipelineFpTest.Switch.BasicPipelineStep;
+﻿namespace PipelineFpTest.Switch;
 
 internal class SwitchContext
 {

@@ -1,13 +1,13 @@
 ﻿using PipelineFp.Pipelines;
 using TinyFp;
 using TinyFp.Extensions;
-using static PipelineFpTest.Switch.BasicPipelineStep.BasicPipelineConstants.Selectors;
+using static PipelineFpTest.Switch.BasicPipelineConstants.Selectors;
 
 using static TinyFp.Prelude;
 
 namespace PipelineFpTest.Switch.BasicPipelineStep;
 
-internal class SwitchEastStep : IStep<SwitchContext>
+internal class SwitchEastStep : IBasicStep<SwitchContext>
 {
     public Either<Unit, SwitchContext> Forward(SwitchContext context)
         => Right<Unit, SwitchContext>(context)

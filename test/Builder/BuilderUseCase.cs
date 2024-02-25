@@ -20,7 +20,7 @@ public static class BuilderUseCase
     }
 
     public static string ResolveUsingBasicPipeline(BuilderStep basicPipelineSteps)
-        => new List<IStep<BuilderStepsContext>>
+        => new List<IBasicStep<BuilderStepsContext>>
         {
             new BuilderFirstStep(),
             new BuilderSecondStep(),

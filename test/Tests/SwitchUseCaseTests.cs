@@ -27,4 +27,15 @@ public class SwitchUseCaseTests
         .ResolveUsingBasicPipeline(selector)
         .Should()
         .Be(expected);
+
+    [TestCase(SwitchSelector.None, "None selector")]
+    [TestCase(SwitchSelector.North, "North selector")]
+    [TestCase(SwitchSelector.South, "South selector")]
+    [TestCase(SwitchSelector.West, "West selector")]
+    [TestCase(SwitchSelector.East, "East selector")]
+    public void WhenUsingBasicPipelineAndConditionedStep_ResolveTheRightString(SwitchSelector selector, string expected)
+        => SwitchUseCase
+        .ResolveUsingBasicPipelineAndConditionedSteps(selector)
+        .Should()
+        .Be(expected);
 }

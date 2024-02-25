@@ -6,7 +6,7 @@ using static TinyFp.Prelude;
 
 namespace PipelineFpTest.Builder.BasicPipelineStep;
 
-internal class BuilderJoinStep : IStep<BuilderStepsContext>
+internal class BuilderJoinStep : IBasicStep<BuilderStepsContext>
 {
     public Either<Unit, BuilderStepsContext> Forward(BuilderStepsContext context)
         => Right<Unit, BuilderStepsContext>(context)
