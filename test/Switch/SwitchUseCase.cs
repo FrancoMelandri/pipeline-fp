@@ -1,6 +1,7 @@
 using PipelineFp.Pipelines;
 using PipelineFpTest.Switch.BasicPipelineStep;
 using PipelineFpTest.Switch.BasicPipelineWithConditionedStep;
+using PipelineFpTest.Switch.HashedPipeline;
 using TinyFp.Extensions;
 
 namespace PipelineFpTest.Switch;
@@ -46,6 +47,22 @@ public static class SwitchUseCase
                       .With(switchSelector)
                       .Map(context => BasicPipeline<SwitchContext>
                                       .Evaluate(steps, context)))
+        .Match(_ => _.Result,
+               _ => string.Empty);
+
+    public static string ResolveUsingHashedPipeline(SwitchSelector switchSelector)
+        => new List<IHashedStep<SwitchHashedContext, SwitchSelector>>
+        {
+            new SwitchEastHashedStep(),
+            new SwitchNorthHashedStep(),
+            new SwitchWestHashedStep(),
+            new SwitchSouthHashedStep(),
+            new SwitchNoneHashedStep(),
+        }
+        .Map(steps => SwitchHashedContext
+                      .With(switchSelector)
+                      .Map(context => HashedPipeline<SwitchHashedContext, SwitchSelector>
+                                     .Evaluate(steps, context)))
         .Match(_ => _.Result,
                _ => string.Empty);
 }
