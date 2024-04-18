@@ -3,8 +3,11 @@
 Introducing **Pipeline pattern** using functional programming approach.
 
 
-## abstract
+## Abstract
 
-The aim of the pattern is to enable a different way to handle the switch case in the code.
-All the code written using switch is not compliant with OOP principle.
-We wanna have a pattern, allow us, to add new use cases without changing the core code to handle the action related to a possible state.
+The aim of the pattern is to enable a different way to handle three use case:
+- Refactor of a convoluted alghoritm, resembling something similar to the template pattern
+- Create a dynamic algorithm, using a Rule-engine-like approach
+- Refactor of a complex and over-populated switch/case
+
+All the code that falls in these use cases is not compliant with OOP principle and our objective is to make it so, with the help of some SOLID principles.
