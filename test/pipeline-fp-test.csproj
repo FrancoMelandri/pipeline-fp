@@ -28,4 +28,9 @@
 	  <ProjectReference Include="..\src\pipeline-fp.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="MixedPipeline\AsyncSteps\" />
+	  <Folder Include="MixedPipeline\Steps\" />
+	</ItemGroup>
+
 </Project>
