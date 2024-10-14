@@ -1,4 +1,4 @@
-namespace PipelineFpTest.Switch;
+namespace PipelineFpTest.Builder;
 
 [Flags]
 public enum BuilderStep
