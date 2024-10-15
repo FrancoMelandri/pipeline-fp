@@ -37,7 +37,7 @@ public class SwitchUseCase
                       .With(switchSelector)
                       .Map(context => ConditionalPipeline<SwitchContext>
                                       .Given(context)
-                                      .Fit(steps)))
+                                      .Flow(steps)))
         .Match(_ => _.Result,
                _ => string.Empty);
 
@@ -54,7 +54,7 @@ public class SwitchUseCase
                       .With(switchSelector)
                       .Map(context => ConditionalPipeline<SwitchContext>
                                       .Given(context)
-                                      .Fit(steps)))
+                                      .Flow(steps)))
         .MatchAsync(_ => _.Result,
                _ => string.Empty);
 
@@ -72,7 +72,7 @@ public class SwitchUseCase
                       .With(switchSelector)
                       .Map(context => ConditionalPipeline<SwitchContext>
                                       .Given(context)
-                                      .Fit(steps, [new SwitchOnErrorAsyncStep()], [])))
+                                      .Flow(steps, [new SwitchOnErrorAsyncStep()], [])))
         .MatchAsync(_ => _.Result,
                _ => string.Empty);
 
@@ -90,7 +90,7 @@ public class SwitchUseCase
                       .With(switchSelector)
                       .Map(context => ConditionalPipeline<SwitchContext>
                                       .Given(context)
-                                      .Fit(steps, [], [])))
+                                      .Flow(steps, [], [])))
         .MatchAsync(_ => _.Result,
                     _ => _.Message);
 
@@ -108,7 +108,7 @@ public class SwitchUseCase
                       .With(switchSelector)
                       .Map(context => ConditionalPipeline<SwitchContext>
                                       .Given(context)
-                                      .Fit(steps, [new SwitchOnErrorAsyncStep()], [new SwitchOnExceptionAsyncStep()])))
+                                      .Flow(steps, [new SwitchOnErrorAsyncStep()], [new SwitchOnExceptionAsyncStep()])))
         .MatchAsync(_ => _.Result,
                _ => string.Empty);
 

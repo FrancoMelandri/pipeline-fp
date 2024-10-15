@@ -14,7 +14,7 @@ internal static class MixedPipelineUseCase
         .With(executeConditional)
         .Map(context => Pipeline<MixedPipelineContext>
                         .Given(context)
-                        .Fit<Error>([new SimpleAsyncStep(),
+                        .Flow<Error>([new SimpleAsyncStep(),
                                      new ConditionalAsyncStep(),
                                      FuncJoinAsyncStep.Join()]))
         .MatchAsync(_ => _.Result,
@@ -25,7 +25,7 @@ internal static class MixedPipelineUseCase
        .With(executeConditional)
        .Map(context => Pipeline<MixedPipelineContext>
                        .Given(context)
-                       .Fit<Error>([new SimpleAsyncStep(),
+                       .Flow<Error>([new SimpleAsyncStep(),
                                     new ConditionalAsyncStep(),
                                     FuncJoinAsyncStep.Join(),
                                     FuncErrorAsyncStep.Error()],
@@ -40,7 +40,7 @@ internal static class MixedPipelineUseCase
        .With(executeConditional)
        .Map(context => Pipeline<MixedPipelineContext>
                        .Given(context)
-                       .Fit<Error>([new SimpleAsyncStep(),
+                       .Flow<Error>([new SimpleAsyncStep(),
                                     new ConditionalAsyncStep(),
                                     FuncJoinAsyncStep.Join(),
                                     FuncExceptionAsyncStep.Exception()],
@@ -56,7 +56,7 @@ internal static class MixedPipelineUseCase
        .With(executeConditional)
        .Map(context => Pipeline<MixedPipelineContext>
                        .Given(context)
-                       .Fit<Error>([new SimpleStep(),
+                       .Flow<Error>([new SimpleStep(),
                                     new ConditionalStep(),
                                     FuncJoinStep.Join(),
                                     FuncErrorStep.Error()],
@@ -71,7 +71,7 @@ internal static class MixedPipelineUseCase
        .With(executeConditional)
        .Map(context => Pipeline<MixedPipelineContext>
                        .Given(context)
-                       .Fit<Error>([new SimpleStep(),
+                       .Flow<Error>([new SimpleStep(),
                                     new ConditionalStep(),
                                     FuncJoinStep.Join(),
                                     FuncExceptionStep.Exception()],
@@ -87,7 +87,7 @@ internal static class MixedPipelineUseCase
         .With(executeConditional)
         .Map(context => Pipeline<MixedPipelineContext>
                         .Given(context)
-                        .Fit<Error>([new SimpleStep(),
+                        .Flow<Error>([new SimpleStep(),
                                      new ConditionalStep(),
                                      FuncJoinStep.Join()]))
         .Match(_ => _.Result,
