@@ -26,7 +26,7 @@ public class BuilderUseCase
         .With(initialValue)
         .Map(context => Pipeline<BuilderAsyncStepsContext>
                        .Given(context)
-                       .Fit([
+                       .Flow([
                            new BuilderAsyncFirstStep(),
                            new BuilderAsyncSecondStep(),
                            new BuilderAsyncThirdStep(),
@@ -39,7 +39,7 @@ public class BuilderUseCase
         .With(initialValue)
         .Map(context => Pipeline<BuilderAsyncStepsContext>
                        .Given(context)
-                       .Fit([
+                       .Flow([
                            new BuilderAsyncFirstStep(),
                            new BuilderAsyncSecondStep(),
                            new BuilderAsyncTestErrorStep(),
@@ -55,7 +55,7 @@ public class BuilderUseCase
         .With(initialValue)
         .Map(context => Pipeline<BuilderAsyncStepsContext>
                        .Given(context)
-                       .Fit([
+                       .Flow([
                            new BuilderAsyncFirstStep(),
                            new BuilderAsyncSecondStep(),
                            new BuilderAsyncTestErrorStep(),
@@ -71,7 +71,7 @@ public class BuilderUseCase
         .With(initialValue)
         .Map(context => Pipeline<BuilderAsyncStepsContext>
                        .Given(context)
-                       .Fit([
+                       .Flow([
                            new BuilderAsyncFirstStep(),
                            new BuilderAsyncSecondStep(),
                            new BuilderAsyncTestExceptionStep(),
@@ -87,7 +87,7 @@ public class BuilderUseCase
        .With(initialValue)
        .Map(context => Pipeline<BuilderStepsContext>
                       .Given(context)
-                      .Fit([
+                      .Flow([
                           new BuilderFirstStep(),
                           new BuilderSecondStep(),
                           new BuilderThirdStep(),
@@ -100,7 +100,7 @@ public class BuilderUseCase
         .With(initialValue)
         .Map(context => Pipeline<BuilderStepsContext>
                        .Given(context)
-                       .Fit([
+                       .Flow([
                            new BuilderFirstStep(),
                            new BuilderSecondStep(),
                            new BuilderTestErrorStep(),
@@ -116,7 +116,7 @@ public class BuilderUseCase
         .With(initialValue)
         .Map(context => Pipeline<BuilderStepsContext>
                        .Given(context)
-                       .Fit([
+                       .Flow([
                            new BuilderFirstStep(),
                            new BuilderSecondStep(),
                            new BuilderTestErrorStep(),
@@ -132,7 +132,7 @@ public class BuilderUseCase
         .With(initialValue)
         .Map(context => Pipeline<BuilderStepsContext>
                        .Given(context)
-                       .Fit([
+                       .Flow([
                            new BuilderFirstStep(),
                            new BuilderSecondStep(),
                            new BuilderTestExceptionStep(),

@@ -1,0 +1,37 @@
+name: Publish Github
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+
+  push: 
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@main
+
+    - name: Setup .NET 8
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '8.0.100'
+        source-url: https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json
+      env:
+        NUGET_AUTH_TOKEN: ${{ github.token }}
+
+    - name: Setup version
+      run: |
+        echo "VERSION=${GITHUB_REF:11}" >> $GITHUB_ENV
+
+    - name: Create package
+      run: |
+        dotnet pack --configuration Release -p:PackageVersion=${{ env.VERSION }} --output .
+
+    - name: Publish the package to GitHub Package Registry
+      run: |
+        dotnet nuget push *.nupkg --skip-duplicate
+
