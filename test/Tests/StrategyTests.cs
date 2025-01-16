@@ -1,6 +1,6 @@
-﻿using FluentAssertions;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using PipelineFpTest.Strategy;
+using Shouldly;
 
 namespace PipelineFpTest.Tests;
 
@@ -12,8 +12,7 @@ internal class StrategyTests
     public void WhenUsingPatternMatching_ResolveTheRightStrategy(string selector, string expected)
     => StrategyUseCase
     .ResolveUsingPatternMatching(selector, ["A", "B", "C"])
-    .Should()
-    .Be(expected);
+    .ShouldBe(expected);
 
     [TestCase("first", "First strategy error")]
     [TestCase("second", "Second strategy error")]
@@ -21,8 +20,7 @@ internal class StrategyTests
     public void WhenUsingPatternMatching_AndThereIsAnEror_ResolveTheRightStrategy(string selector, string expected)
         => StrategyUseCase
         .ResolveUsingPatternMatching(selector, [])
-        .Should()
-        .Be(expected);
+        .ShouldBe(expected);
 
     [TestCase("first", "A")]
     [TestCase("second", "B")]
@@ -31,8 +29,7 @@ internal class StrategyTests
         => StrategyUseCase
         .ResolveUsingAsyncPatternMatching(selector, ["A", "B", "C"])
         .Result
-        .Should()
-        .Be(expected);
+        .ShouldBe(expected);
 
     [TestCase("first", "First strategy error")]
     [TestCase("second", "Second strategy error")]
@@ -41,6 +38,5 @@ internal class StrategyTests
         => StrategyUseCase
         .ResolveUsingAsyncPatternMatching(selector, [])
         .Result
-        .Should()
-        .Be(expected);
+        .ShouldBe(expected);
 }
