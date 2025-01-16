@@ -1,6 +1,6 @@
-using FluentAssertions;
 using NUnit.Framework;
 using PipelineFpTest.Switch;
+using Shouldly;
 
 namespace PipelineFpTest.Tests;
 
@@ -14,8 +14,7 @@ public class SwitchUseCaseTests
     public void WhenUsingSwitch_ResolveTheRightString(SwitchSelector selector, string expected)
         => new SwitchUseCase()
             .ResolveUsingSwitch(selector)
-            .Should()
-            .Be(expected);
+            .ShouldBe(expected);
 
     [TestCase(SwitchSelector.None, "None selector")]
     [TestCase(SwitchSelector.North, "North selector")]
@@ -25,8 +24,7 @@ public class SwitchUseCaseTests
     public void WhenUsingConditionalPipeline_ResolveTheRightString(SwitchSelector selector, string expected)
     => SwitchUseCase
     .ResolveUsingConditionalPipeline(selector)
-    .Should()
-    .Be(expected);
+    .ShouldBe(expected);
 
     [TestCase(SwitchSelector.None, "None selector")]
     [TestCase(SwitchSelector.North, "North selector")]
@@ -37,8 +35,7 @@ public class SwitchUseCaseTests
         => SwitchUseCase
         .ResolveUsingConditionalAsyncPipeline(selector)
         .Result
-        .Should()
-        .Be(expected);
+        .ShouldBe(expected);
 
     [TestCase(SwitchSelector.None, "Error Handled: Error")]
     [TestCase(SwitchSelector.North, "Error Handled: Error")]
@@ -49,8 +46,7 @@ public class SwitchUseCaseTests
         => SwitchUseCase
         .ResolveUsingConditionalAsyncPipeline_WhenError(selector)
         .Result
-        .Should()
-        .Be(expected);
+        .ShouldBe(expected);
 
     [TestCase(SwitchSelector.None, "Error")]
     [TestCase(SwitchSelector.North, "Error")]
@@ -61,8 +57,7 @@ public class SwitchUseCaseTests
         => SwitchUseCase
         .ResolveUsingConditionalAsyncPipeline_WhenErrorAndWithoutErrorSteps(selector)
         .Result
-        .Should()
-        .Be(expected);
+        .ShouldBe(expected);
 
     [TestCase(SwitchSelector.None, "Exception Handled: Exception")]
     [TestCase(SwitchSelector.North, "Exception Handled: Exception")]
@@ -73,8 +68,7 @@ public class SwitchUseCaseTests
         => SwitchUseCase
         .ResolveUsingConditionalAsyncPipeline_WhenException(selector)
         .Result
-        .Should()
-        .Be(expected);
+        .ShouldBe(expected);
 
     [TestCase(SwitchSelector.None, "None")]
     [TestCase(SwitchSelector.North, "North")]
@@ -86,8 +80,7 @@ public class SwitchUseCaseTests
     public void WhenUsingPatternMatching_ResolveTheRightString(SwitchSelector selector, string expected)
         => SwitchUseCase
         .ResolveUsingPatternMatching(selector)
-        .Should()
-        .Be(expected);
+        .ShouldBe(expected);
 
     [TestCase(SwitchSelector.None, "None")]
     [TestCase(SwitchSelector.North, "North")]
@@ -100,6 +93,5 @@ public class SwitchUseCaseTests
         => SwitchUseCase
         .ResolveUsingAsyncPatternMatching(selector)
         .Result
-        .Should()
-        .Be(expected);
+        .ShouldBe(expected);
 }

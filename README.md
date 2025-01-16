@@ -1,3 +1,5 @@
+[![CI](https://github.com/FrancoMelandri/pipeline-fp/actions/workflows/ci.yaml/badge.svg)](https://github.com/FrancoMelandri/pipeline-fp/actions/workflows/ci.yaml/badge.svg)
+
 # Pipeline FP
 
 Introducing **Pipeline pattern** using functional programming approach.
